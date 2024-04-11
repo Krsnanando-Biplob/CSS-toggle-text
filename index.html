@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS toggle text</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #1a242a;
+    }
+    .container{
+      position: relative;
+      width: 0px;
+      height: 0px;
+      background: #37444b;
+      border-radius: 25px;
+      transition: 0.5s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container.active{
+      width: 400px;
+      height: 400px;
+      transition-delay: 0.5s;
+    }
+    .container::before{
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      bottom: -15px;
+      background: #37444b;
+      transform: rotate(45deg);
+      border-radius: 5px;
+      opacity: 0;
+      transition: 0.5s;
+    }
+    .toGoleBtn{
+      position: absolute;
+      min-width: 60px;
+      height: 60px;
+      bottom: -20px;
+      background-color: #0bcf9c;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.5s;
+    }
+    .toGoleBtn::before{
+      content: "+";
+      font-size: 2.5em;
+      color: #fff;
+    }
+    .container.active .toGoleBtn{
+      bottom: -90px;
+      transform: rotate(135deg);
+      background: #ff5a37;
+    }
+    .container.active::before{
+      transition-delay: 0.5s;
+      opacity: 1;
+    }
+    .container .text{
+      min-width: 400px;
+      padding: 30px;
+      color: #fff;
+      opacity: 0;
+      transition: 0.5s;
+      transform: scale(0);
+    }
+    .container.active .text{
+      opacity: 2;
+      transition-delay: 0.5s;
+
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="text">
+      <h2>Hadding....</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ullam fuga, deserunt fugit quae nulla velit suscipit ipsa doloremque repellendus molestias voluptatibus quos? Omnis suscipit id sit officiis dolore sint!</p>
+    </div>
+    <div class="toGoleBtn">
+
+    </div>
+  </div>
+  <script>
+    let toGoleBtn= document.querySelector(".toGoleBtn");
+    let container= document.querySelector(".container");
+
+    toGoleBtn.onclick= function (){
+      container.classList.toggle('active');
+
+    }
+
+  </script>
+</body>
+</html>
